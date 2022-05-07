@@ -2,18 +2,12 @@ if (!isServer) exitwith {};
 OT_NATO_Group_Recon = "";
 OT_NATO_Group_Engineers = "";
 
-
-for "_i" from 1 to 3 do { 
-	private _NewSquad = [OT_NATO_ArmyLead,OT_NATO_Army call BIS_fnc_selectRandom,OT_NATO_Army call BIS_fnc_selectRandom,OT_NATO_Army call BIS_fnc_selectRandom, OT_NATO_Army call BIS_fnc_selectRandom,OT_NATO_Army call BIS_fnc_selectRandom, OT_NATO_Army call BIS_fnc_selectRandom, OT_NATO_Army call BIS_fnc_selectRandom];
-	OT_NATO_GroundForces pushback _NewSquad;
-};
-
 {
 	private _name = configName _x;
 	if((_name find "ENG") > -1) then {
 		OT_NATO_Group_Engineers = _name;
 	};
-}foreach("true" configClasses (configFile >> "CfgGroups" >> "West" >> OT_faction_NATO >> "Support"));
+}foreach("true" configClasses (configFile >> "CfgGroups" >> "West" >> rhs_faction_usarmy_wd >> "rhs_group_nato_usarmy_wd_infantry"));
 
 OT_NATO_Units_LevelOne = [];
 OT_NATO_Units_LevelTwo = [];
@@ -76,45 +70,6 @@ private _c = 0;
 
 (OT_loadingMessages call BIS_fnc_selectRandom) remoteExec['OT_fnc_notifyStart',0,false];
 
-{
-	private _name = _x;
-	[_name] spawn {
-		private _name = _this select 0;
-		private _loadout = getUnitLoadout _name;
-		private _loadouts = [];
-		for "_i" from 1 to 5 do {
-			_loadouts pushback ([_loadout,OT_NATO_GarrisonWep,OT_NATO_GarrisonWepGL,OT_NATO_GarrisonWepMG,OT_NATO_GarrisonWepSR] call OT_fnc_randomizeLoadout);
-		};
-		spawner setVariable [format["loadouts_%1",_name],_loadouts,false];
-	};
-}foreach(OT_NATO_Garrison);
-
-{
-	private _name = _x;
-	[_name] spawn {
-		private _name = _this select 0;
-		private _loadout = getUnitLoadout _name;
-		private _loadouts = [];
-		for "_i" from 1 to 5 do {
-			_loadouts pushback ([_loadout,OT_NATO_ReinforcementsWep,OT_NATO_ReinforcementsWepGL,OT_NATO_ReinforcementsWepMG,OT_NATO_ReinforcementsWepSR] call OT_fnc_randomizeLoadout);
-		};
-		spawner setVariable [format["loadouts_%1",_name],_loadouts,false];
-	};
-}foreach(OT_NATO_Reinforcements);
-
-{
-	private _name = _x;
-	[_name] spawn {
-		private _name = _this select 0;
-		private _loadout = getUnitLoadout _name;
-		private _loadouts = [];
-		for "_i" from 1 to 5 do {
-			_loadouts pushback ([_loadout,OT_NATO_ArmyWep,OT_NATO_ArmyWepGL,OT_NATO_ArmyWepMG,OT_NATO_ArmyWepSR] call OT_fnc_randomizeLoadout);
-		};
-		spawner setVariable [format["loadouts_%1",_name],_loadouts,false];
-	};
-}foreach(OT_NATO_Army);
-
 //Generate and cache gendarm loadouts
 private _loadout = getUnitLoadout OT_NATO_Unit_Police;
 private _loadouts = [];
@@ -130,28 +85,6 @@ for "_i" from 1 to 5 do {
 };
 
 spawner setVariable [format["loadouts_%1",OT_NATO_Unit_PoliceCommander],_loadouts,false];
-
-private _loadout = getUnitLoadout OT_NATO_GarrisonLead;
-private _loadouts = [];
-for "_i" from 1 to 5 do {
-	_loadouts pushback ([_loadout,OT_NATO_GarrisonWep,OT_NATO_GarrisonWepGL,OT_NATO_GarrisonWepMG,OT_NATO_GarrisonWepSR] call OT_fnc_randomizeLoadout);
-};
-spawner setVariable [format["loadouts_%1",OT_NATO_GarrisonLead],_loadouts,false];
-
-private _loadout = getUnitLoadout OT_NATO_ReinforcementsLead;
-private _loadouts = [];
-for "_i" from 1 to 5 do {
-	_loadouts pushback ([_loadout,OT_NATO_ReinforcementsWep,OT_NATO_ReinforcementsWepGL,OT_NATO_ReinforcementsWepMG,OT_NATO_ReinforcementsWepSR] call OT_fnc_randomizeLoadout);
-};
-spawner setVariable [format["loadouts_%1",OT_NATO_ReinforcementsLead],_loadouts,false];
-
-private _loadout = getUnitLoadout OT_NATO_ArmyLead;
-private _loadouts = [];
-for "_i" from 1 to 5 do {
-	_loadouts pushback ([_loadout,OT_NATO_ArmyWep,OT_NATO_ArmyWepGL,OT_NATO_ArmyWepMG,OT_NATO_ArmyWepSR] call OT_fnc_randomizeLoadout);
-};
-spawner setVariable [format["loadouts_%1",OT_NATO_ArmyLead],_loadouts,false];
-
 
 OT_NATO_Units_LevelTwo = OT_NATO_Units_LevelOne + OT_NATO_Units_LevelTwo;
 
@@ -233,7 +166,7 @@ if((server getVariable "StartupType") == "NEW" || (server getVariable ["NATOvers
 				};
 				*/
 				private _garrison = floor(_base + random(8));
-				
+
 				if(_name isEqualTo OT_NATO_HQ) then {
 					_garrison = 48;
 					_statics = OT_NATO_StaticGarrison_HQ;
@@ -349,7 +282,7 @@ if((server getVariable "StartupType") == "NEW" || (server getVariable ["NATOvers
 		{
 			_fill pushBack _x;
 		}foreach(_statics);
-		
+
 	}foreach(OT_airportData);
 
 	diag_log "Overthrow: Setting up NATO checkpoints";
@@ -556,7 +489,7 @@ private _revealed = server getVariable ["revealedFOBs",[]];
 			_mrkid setMarkerColor "ColorRed";
 			_mrkid setMarkerAlpha 1;
 			_mrkid setMarkerSize [30, 30];
-	};	
+	};
 }foreach(server getVariable ["NATOfobs",[]]);
 
 publicVariable "OT_allObjectives";

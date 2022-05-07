@@ -21,7 +21,7 @@
                 //old gang format, generate one
                 _vest = _gang select 3;
                 _weapon = selectRandom (OT_CRIM_Weapons);
-                _loadout = [(format["gang%1",_gangid]),OT_CRIMBaseLoadout,[[_weapon]]] call OT_fnc_getRandomLoadout;
+                _loadout = [(format["gang%1",_gangid]),OT_CRIMBaseLoadout,[[_weapon]]] call OT_fnc_CRIMgetRandomLoadout;
                 (_loadout select 4) set [0,_vest];
 
                 _gang pushback _loadout;
@@ -32,7 +32,7 @@
             };
             if !((_gang select 5) isEqualType []) then {
                 _weapon = selectRandom (OT_CRIM_Weapons + OT_allCheapRifles);
-                _loadout = [(format["gang%1",_gangid]),OT_CRIMBaseLoadout,[[_weapon]]] call OT_fnc_getRandomLoadout;
+                _loadout = [(format["gang%1",_gangid]),OT_CRIMBaseLoadout,[[_weapon]]] call OT_fnc_CRIMgetRandomLoadout;
                 _gang set [5,_loadout];
                 OT_civilians setVariable [format["gang%1",_gangid],_gang,true];
             };

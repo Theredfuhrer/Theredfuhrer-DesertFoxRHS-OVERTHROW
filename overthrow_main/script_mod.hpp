@@ -24,11 +24,11 @@
 
 // these settings work with CBA_A3 common macros
 
-#define MOD_NAME Dead's Overthrow //Overthrow
+#define MOD_NAME DesertFox's Overthrow //Overthrow
 
 #define PREFIX overthrow_main
 
-#define MOD_AUTHOR Edited-Gerhart; Edited again with love-deadorbit
+#define MOD_AUTHOR Edited by deadorbit;edited again TheDesertFox
 
 #include "script_version.hpp"
 

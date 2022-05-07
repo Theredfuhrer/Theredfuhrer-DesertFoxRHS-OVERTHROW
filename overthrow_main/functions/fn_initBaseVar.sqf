@@ -41,166 +41,166 @@ OT_Loadout_Police = [
 OT_Recruitables = [
     //Rifleman
 	["I_soldier_F",[
-        ["rhs_weap_m4a1_carryhandle","","","rhsusf_acc_acog",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
         [],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_1",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
+        ["rhsgref_6b23_ttsko_digi_rifleman",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
         [],
-        "rhsusf_ach_helmet_ocp",
+        "rhsgref_6b27m_ttsko_forest",
         "",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Autorifleman
 	["I_Soldier_AR_F",[
-        ["rhs_weap_m249_light_L","","","rhsusf_acc_elcan_ard",["rhsusf_100Rnd_556x45_soft_pouch",100],[],"rhsusf_acc_grip4_bipod"],
+        ["rhs_weap_pkp","","","rhsusf_acc_pkas",["rhs_100Rnd_762x54mmR_green",100],[],""],
         [],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
-        ["rhsusf_iotv_ocp_SAW",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhsusf_100Rnd_556x45_soft_pouch",5,100]]],
-        [],
-        "rhsusf_ach_helmet_ocp",
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_2",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
+        ["rhsgref_6b23_ttsko_forest",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_100Rnd_762x54mmR_green",1,100]]],
+        ["rhsgref_6b23_ttsko_alicepack",[["rhs_100Rnd_762x54mmR_green",4,100]]],
+        "rhsgref_6b27m_ttsko_forest",
         "",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Rifleman (AT)
 	["I_Soldier_LAT_F",[
-        ["rhs_weap_m4a1_carryhandle","","","rhsusf_acc_acog",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
-      ["rhs_weap_maaws","","","",["rhs_mag_maaws_HEAT",1],[],""],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
-        ["rhsusf_assault_eagleaiii_ocp_maaws",[["rhs_mag_maaws_HEAT",4,1]]],
-        "rhsusf_ach_helmet_ocp","",
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
+      ["rhs_weap_rpg7","","","",["rhs_rpg7_PG7VL_mag",1],[],""],
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_1",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
+        ["rhsgref_6b23_ttsko_forest",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
+        ["rhsgref_6b23_ttsko_alicepack",[["rhs_rpg7_PG7VL_mag",5,1]]],
+        "rhsgref_6b27m_ttsko_forest","",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Marksman
 	["I_Soldier_M_F",[
-      ["rhs_weap_m14ebrri","","","rhsusf_acc_leupoldmk4",["rhsusf_20Rnd_762x51_m118_special_Mag",20],[],"rhsusf_acc_harris_bipod"],
+      ["rhs_weap_t5000","","","rhsusf_acc_dh520x56",["rhs_5Rnd_338lapua_t5000",5],[],"rhs_acc_harris_swivel"],
         [],
-        ["rhs_weap_glock17g4","","","",["rhsusf_mag_17Rnd_9x19_FMJ",17],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_17Rnd_9x19_FMJ",2,17],["MiniGrenade",2,1],["rhsusf_20Rnd_762x51_m118_special_Mag",6,20]]],
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_2",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
+        ["rhsgref_6b23_ttsko_digi_sniper",[["rhs_mag_9x19_17",2,17],["MiniGrenade",2,1],["rhs_5Rnd_338lapua_t5000",10,5]]],
         [],
-        "rhsusf_ach_helmet_ocp","",
+        "rhsgref_6b27m_ttsko_forest","",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Sniper
 	["I_Sniper_F",[
-        ["rhs_weap_m24sws_wd","","","rhsusf_acc_leupoldmk4_wd",["rhsusf_5Rnd_762x51_m993_Mag",5],[],""],
+      ["rhs_weap_svdp_wd","","","rhsusf_acc_pso1m21",["rhs_10Rnd_762x54mmR_green7N1",10],[],""],
         [],
-        ["rhs_weap_glock17g4","","","",["rhsusf_mag_17Rnd_9x19_FMJ",17],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
-        ["rhsusf_iotv_ocp_Teamleader",[["rhsusf_mag_17Rnd_9x19_FMJ",2,17],["rhsusf_5Rnd_762x51_m993_Mag",8,5]]],
+        ["rhs_weap_pyz","","","",["rhs_rpg7_PG7VL_mag",17],[],""],
+        ["rhsgref_uniform_TLA_2",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
+        ["rhsgref_6b23_ttsko_digi_sniper",[["rhs_mag_9x19_17",2,17],["rhs_10Rnd_762x54mmR_green7N1",8,10]]],
         [],
-        "rhsusf_ach_helmet_ocp","",
+        "rhsgref_6b27m_ttsko_forest","",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Spotter
 	["I_Spotter_F",[
-        ["rhs_weap_m4a1","","","rhsusf_acc_acog",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
         [],
-        ["rhs_weap_glock17g4","","","",["rhsusf_mag_17Rnd_9x19_FMJ",17],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_17Rnd_9x19_FMJ",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
+        ["rhs_weap_pyz","","","",["rhs_rpg7_PG7VL_mag",17],[],""],
+        ["rhsgref_uniform_TLA_1",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
+        ["rhsgref_6b23_ttsko_forest",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
         [],
-        "rhsusf_ach_helmet_ocp",
+        "rhsgref_6b27m_ttsko_forest",
         "",
         ["Binocular","","","",[],[],""],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Squad Leader
 	["I_Soldier_SL_F",[
-        ["rhs_weap_m4a1","","","rhsusf_acc_acog",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
         [],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
-        ["rhsusf_iotv_ocp_Squadleader",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
+        ["rhs_weap_pyz","","","",["rhs_rpg7_PG7VL_mag",17],[],""],
+        ["rhsgref_uniform_TLA_1",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2]]],
+        ["rhsgref_6b23_ttsko_digi_officer",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
         [],
-        "rhsusf_ach_helmet_ocp",
+        "rhsgref_6b27m_ttsko_forest",
         "",
         ["Binocular","","","",[],[],""],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Medic
 	["I_Medic_F",[
-        ["rhs_weap_m4","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
+        ["rhs_weap_aks74un","","","rhsusf_acc_ekp1",["rhs_30Rnd_545x39_7N6M_AK",30],[],""],
         [],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[]],
-        ["rhsusf_iotv_ocp_Medic",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
-        ["rhsusf_assault_eagleaiii_ocp_medic",[["ACE_morphine",10],["ACE_epinephrine",10],["ACE_fieldDressing",20]]],
-        "rhsusf_ach_helmet_ocp",
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_1",[]],
+        ["rhsgref_6b23_ttsko_digi_Medic",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_30Rnd_545x39_7N6M_AK",6,30]]],
+        ["rhs_medic_bag_filled",[["ACE_morphine",10],["ACE_bloodIV_500",5],["ACE_epinephrine",10],["ACE_fieldDressing",20]]],
+        "rhsgref_6b27m_ttsko_forest",
         "",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //AT
 	["I_Soldier_AT_F",[
-        ["rhs_weap_m4","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
-        ["rhs_weap_fgm148","","","",["rhs_fgm148_magazine_AT",1],[],""],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
-        ["rhsusf_assault_eagleaiii_ocp_at",[["rhs_fgm148_magazine_AT",2,1]]],
-        "rhsusf_ach_helmet_ocp","",
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
+        ["rhs_weap_rpg7","","","",["rhs_rpg7_PG7VL_mag",1],[],""],
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_1",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
+        ["rhsgref_6b23_ttsko_forest",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
+        ["rhsgref_6b23_ttsko_alicepack",[["rhs_rpg7_PG7VL_mag",5,1]]],
+        "rhsgref_6b27m_ttsko_forest","",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //AA
 	["I_Soldier_AA_F",[
-        ["rhs_weap_m16a4","","","rhsusf_acc_acog",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
-        ["rhs_weap_fim92","","","",["rhs_fim92_mag",1],[],""],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
-        ["rhsusf_assault_B_BACKPACK",[["rhs_fim92_mag",2,1]]],
-        "rhsusf_ach_helmet_ocp","",
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
+        ["rhs_weap_igla","","","",["rhs_mag_9k38_rocket",1],[],""],
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_2",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
+        ["rhsgref_6b23_ttsko_forest",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
+        ["rhsgref_6b23_ttsko_alicepack",[["rhs_mag_9k38_rocket",5,1]]],
+        "rhsgref_6b27m_ttsko_forest","",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Assistant AT
 	["I_Soldier_AAT_F",[
-        ["rhs_weap_m4","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
         [],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
-        ["rhsusf_assault_eagleaiii_ocp_at",[["rhs_fgm148_magazine_AT",3,1]]],
-        "rhsusf_ach_helmet_ocp",
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_2",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
+        ["rhsgref_6b23_ttsko_forest",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
+        ["rhsgref_6b23_ttsko_alicepack",[["rhs_rpg7_PG7VL_mag",5,1]]],
+        "rhsgref_6b27m_ttsko_forest",
         "",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Assistant AA
 	["I_Soldier_AAA_F",[
-        ["rhs_weap_m16a4","","","rhsusf_acc_acog",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],
+        ["rhs_weap_ak74m","","","rhsusf_acc_pkas",["rhs_mag_30Rnd_545x39_7N10_AK",30],[],""],
         [],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
-        ["rhsusf_iotv_ocp_Rifleman",[["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
-        ["rhsusf_assault_B_BACKPACK",[["rhs_fim92_mag",3,1]]],
-        "rhsusf_ach_helmet_ocp",
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_1",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
+        ["rhsgref_6b23_ttsko_forest",[["rhs_mag_9x19_17",2,17],["rhs_mag_m67",2,1],["rhs_mag_30Rnd_545x39_7N10_AK",6,30]]],
+        ["rhsgref_6b23_ttsko_alicepack",[["rhs_mag_9k38_rocket",5,1]]],
+        "rhsgref_6b27m_ttsko_forest",
         "",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ],
     //Grenadier
 	["I_Soldier_GL_F",[
-        ["rhs_weap_m4_m203","","","rhsusf_acc_compm4",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],["rhs_mag_M433_HEDP",1],""],
+        ["rhs_weap_ak74m_gp25_npz","","","rhsusf_acc_1p87",["rhs_mag_30Rnd_545x39_7N10_AK_plum_AK",30],["rhs_VOG25",1],""],
         [],
-        ["rhsusf_weap_m9","","","",["rhsusf_mag_15Rnd_9x19_FMJ",15],[],""],
-        ["rhs_uniform_acu_oefcp",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
-        ["rhsusf_iotv_ocp_Grenadier",[["SmokeShell",4,1],["rhs_mag_m67",4,1],["rhsusf_mag_15Rnd_9x19_FMJ",2,15],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30]]],
-        ["rhsusf_falconii_gr",[["1Rnd_HE_Grenade_shell",20,1],["1Rnd_SmokeBlue_Grenade_shell",3,1],["1Rnd_SmokeGreen_Grenade_shell",3,1],["1Rnd_SmokeOrange_Grenade_shell",3,1],["1Rnd_Smoke_Grenade_shell",3,1]]],
-        "rhsusf_ach_helmet_ocp","",
+        ["rhs_weap_pyz","","","",["rhs_mag_9x19_17",17],[],""],
+        ["rhsgref_uniform_TLA_1",[["ACE_morphine",1],["ACE_epinephrine",1],["ACE_fieldDressing",2],["ACE_EarPlugs",1]]],
+        ["rhsgref_6b23_ttsko_digi_nco",[["rhs_VOG400P_white",4,1],["rhs_mag_m67",4,1],["rhs_mag_9x19_17",2,17],["rhs_mag_30Rnd_545x39_7N10_AK_plum_AK",6,30]]],
+        ["rhsgref_6b23_ttsko_alicepack",[["rhs_VOG25",20,1],["rhs_VOG400P_white",3,1],["rhs_VOG400P_green",3,1],["rhs_VOG400P_red",3,1],["rhs_GRD40_Green",3,1]]],
+        "rhsgref_6b27m_ttsko_forest","",
         [],
-        ["ItemMap","","","","","rhsusf_ANPVS_14"]]
+        ["ItemMap","","","","","rhs_1PN138"]]
     ]
 ];
 

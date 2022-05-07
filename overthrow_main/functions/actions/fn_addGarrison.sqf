@@ -71,7 +71,7 @@ if(_create isEqualType 1) then {
                     || (_type == "Land_Cargo_HQ_V4_F")
                 ) exitWith {
                     private _p = (_building buildingPos 8);
-                    private _guns = ({alive _x} count (nearestObjects [_p, ["I_HMG_01_high_F","I_GMG_01_high_F"], 5]));
+                    private _guns = ({alive _x} count (nearestObjects [_p, ["rhsgref_tla_g_DSHKM","rhsgref_nat_AGS30_TriPod"], 5]));
                     if(_guns == 0) then {
                         [getDir _building, _p];
                     } else {
@@ -88,7 +88,7 @@ if(_create isEqualType 1) then {
     				private _p = [_building buildingPos 1, 2.3, _ang] call BIS_Fnc_relPos;
     				private _dir = (getDir _building) - 180;
 
-                    private _guns = {alive _x} count(nearestObjects [_p, ["I_HMG_01_high_F","I_GMG_01_high_F"], 5]);
+                    private _guns = {alive _x} count(nearestObjects [_p, ["rhsgref_tla_g_DSHKM","rhsgref_nat_AGS30_TriPod"], 5]);
                     if(_guns == 0) then {
                         [ getDir _building, _p ];
                     } else {
@@ -97,13 +97,13 @@ if(_create isEqualType 1) then {
                 };
 
                 private _p = _building buildingPos 11;
-                private _guns = {alive _x} count(nearestObjects [_p, ["I_HMG_01_high_F","I_GMG_01_high_F"], 5]);
+                private _guns = {alive _x} count(nearestObjects [_p, ["rhsgref_tla_g_DSHKM","rhsgref_nat_AGS30_TriPod"], 5]);
                 if(_guns isEqualTo 0) exitWith {
                     [getDir _building, _p];
                 };
 
                 _p = _building buildingPos 13;
-                _guns = {alive _x} count(nearestObjects [_p, ["I_HMG_01_high_F","I_GMG_01_high_F"], 5]);
+                _guns = {alive _x} count(nearestObjects [_p, ["rhsgref_tla_g_DSHKM","rhsgref_nat_AGS30_TriPod"], 5]);
                 if(_guns isEqualTo 0) exitWith {
                     [getDir _building, _p];
                 };
@@ -120,10 +120,10 @@ if(_create isEqualType 1) then {
         private _class_obj = "";
         private _class_price = "";
         if (_create == "HMG") then {
-            _class_obj = "I_HMG_01_high_F";
+            _class_obj = "rhsgref_tla_g_DSHKM";
             _class_price = "I_HMG_01_high_weapon_F";
         } else {
-            _class_obj = "I_GMG_01_high_F";
+            _class_obj = "rhsgref_nat_AGS30_TriPod";
             _class_price = "I_GMG_01_high_weapon_F";
         };
 

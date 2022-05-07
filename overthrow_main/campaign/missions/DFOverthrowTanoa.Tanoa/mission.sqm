@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1545;
+	toggles=521;
 	class ItemIDProvider
 	{
-		nextID=2578;
+		nextID=2694;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=402;
+		nextID=531;
 	};
 	class Camera
 	{
-		pos[]={8261.6074,19.962225,1082.615};
-		dir[]={0.428718,-0.4800337,0.76536375};
-		up[]={0.23459624,0.87724543,0.41880882};
-		aside[]={0.87245452,2.2533641e-008,-0.48870608};
+		pos[]={8290.6973,27.30673,1053.2511};
+		dir[]={0.12400196,-0.54185778,0.83128041};
+		up[]={0.079944246,0.84046787,0.53592914};
+		aside[]={0.98906207,-3.7287464e-008,-0.14753835};
 	};
 };
 binarizationWanted=0;
@@ -83,7 +83,8 @@ addons[]=
 	"A3_Structures_F_Exp_Military_Pillboxes",
 	"A3_Structures_F_Ind_Transmitter_Tower",
 	"A3_Structures_F_Ind_WindPowerPlant",
-	"A3_Props_F_Exp_Naval_Boats"
+	"A3_Props_F_Exp_Naval_Boats",
+	"A3_Modules_F"
 };
 class AddonsMetaData
 {
@@ -30394,7 +30395,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=169;
+		items=170;
 		class Item0
 		{
 			dataType="Marker";
@@ -38657,6 +38658,41 @@ class Mission
 			};
 			id=2352;
 			atlOffset=-2.9802322e-008;
+		};
+		class Item169
+		{
+			dataType="Layer";
+			name="CBA ACE AI Surrender Script";
+			class Entities
+			{
+				items=2;
+				class Item0
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={8385.1797,-3.028832,1117.2748};
+					};
+					name="ACE_surrendering_EH";
+					init="if (hasInterface) then { " \n " _ACE_surrendering_EH = [] spawn { " \n "  waitUntil {CBA_missionTime > 5}; " \n "  waitUntil {!isNull (findDisplay 46)}; " \n "  systemChat ""ACE_surrendering_EH initialized.""; " \n "  [{ " \n "   private _target = cursorObject; " \n "   private _player = call CBA_fnc_currentUnit; " \n "   private _players = call CBA_fnc_players; " \n "   _CHZ_hintSurrender = { " \n "    params [""_target"", ""_player""]; " \n "    [_target, _player] spawn { " \n "     params [""_target"", ""_player""]; " \n "     private _nearestMan = nearestObjects [_target, [""Man""], 15, true]; " \n "     private _nearestAliveMan = []; " \n "     { " \n "      if (alive _x) then { " \n "       _nearestAliveMan set [(count _nearestAliveMan), _x]; " \n "      }; " \n "     } forEach _nearestMan; " \n "     private _msgArray = _nearestAliveMan arrayIntersect allPlayers; " \n "     { " \n "      _surrenderMsg = selectRandom [ " \n "       ""I surrender!"", " \n "       ""Fuckers..."", " \n "       ""No! I have no gun, no knife, no nothing! I'm unarmed!\nDon't shoot, don't shoot!"", " \n "       ""Don't shoot! Please!"", " \n "       ""Okay! OKAY!"",""Ah shit..."", " \n "       ""No no no no!\nPlease no! I give up!\nDon't kill me!"", " \n "       ""No shoot GI, I no VC,\n GI number one!"", " \n "       ""I'm not paid enough for all this shit."", " \n "       ""Man, fuck you! Fuck this shit! I'm done!\nI'm fucking done with all this shit.\nI surrender already, just get on with it."",""Damn... and sometimes the bear gets you...\nAlright, alright! I surrender..."", " \n "       ""Fucking eat my ENTIRE ass..."",""Motherfucker...\nYeah, I give up, you win..."", " \n "       ""I don't know what this is! I swear!\nI just came for the free pizza!"", " \n "       ""Whoa, whoa, whoa! Don't shoot! Please!"" " \n "      ]; " \n "      hintSilent _surrenderMsg; " \n "      sleep 2; " \n "      hintSilent """"; " \n "     } forEach _msgArray; " \n "    }; " \n "   }; " \n "   if ( " \n "    (_target != objNull) && " \n "    (alive _target) && " \n "    {!(isPlayer _target)} && " \n "    {!(_target in _players)} && " \n "    {_target call CBA_fnc_isPerson} && " \n "    (isNull objectParent _target) && " \n "    {!(_target getVariable [""ACE_captives_isSurrendering"", false])} && " \n "    {!(_target getVariable [""ACE_captives_isHandcuffed"", false])} && " \n "    {!(_target getVariable [""ACE_medical_isUnconscious"", false])} && " \n "    (!(captive _target)) && " \n "    (side _target != side group _player) && " \n "    (currentWeapon _player != """") && " \n "    (!(weaponLowered _player)) && " \n "    (_target distance _player < 12) && " \n "    ( " \n "     (fleeing _target) || " \n "     (currentWeapon _target == """") || " \n "     (!(someAmmo _target) && ((_target ammo currentWeapon _target) < 5) && (random 100 > 25)) || " \n "     (((damage _target) > 0.7) && (random 100 > 15)) || " \n "     ((_target distance _player < 6) && (random 100 > 40) && (someAmmo _target) && ((_target ammo currentWeapon _target) == 0) && (behaviour _target == ""COMBAT"")) || " \n "     ((_target distance _player < 6) && (random 100 > 5) && (behaviour _target == ""CARELESS"")) || " \n "     ((_target distance _player < 6) && (random 100 > 15) && (behaviour _target == ""SAFE"")) || " \n "     ((_target distance _player < 6) && (random 100 > 40) && (behaviour _target == ""AWARE"")) || " \n "     ((_target distance _player < 3) && (random 100 > 40) && (behaviour _target == ""COMBAT"")) || " \n "     ((_target distance _player < 9) && (!(_target checkAIFeature ""FSM"") || ((_target skill ""aimingAccuracy"") == 0) || ((getFatigue _target) < 0.5))) " \n "    ) " \n "   ) then { " \n "    _CHZ_waitSurrender = { " \n "     private _debug = false; " \n "     params [""_unit""]; " \n "     if (_debug) then {systemChat ""Waiting for escape attempt..."";}; " \n "     private _player = call CBA_fnc_currentUnit; " \n "     private _players = call CBA_fnc_players; " \n "     private _nearestPlayer = ((nearestObjects [_unit, [""Man""], 15, true]) arrayIntersect allPlayers) select 0; " \n "     _unit setVariable [""nearDroppedWeapon"", false, true]; " \n "     _unit setVariable [""droppedWeaponBox"", false, true]; " \n "     _unit setVariable [""droppedBoxContents"", false, true]; " \n "     _unit setVariable [""droppedWeaponID"", false, true]; " \n "     waitUntil { " \n "      sleep 1; " \n "      if ( " \n "       (alive _unit) && " \n "       ( " \n "        ((_unit distance (_unit findNearestEnemy _unit)) > 15) || " \n "        ((currentWeapon (_unit findNearestEnemy _unit)) == """") " \n "       ) && ( " \n "        (_unit distance _nearestPlayer > 15) || " \n "        (currentWeapon _nearestPlayer == """") " \n "       ) " \n "      ) then {true} else {false}; " \n "     }; " \n "     if (_debug) then { " \n "      systemChat format [""%1 initialized, %2 is too far to guard captive."", _unit, _player]; " \n "      if (isNull (_unit findNearestEnemy _unit)) then { " \n "       systemChat ""No enemy nearby.""; " \n "      } else { " \n "       systemChat format [""%1 is nearest enemy, and he's %2 meters away!"", _unit findNearestEnemy _unit, _unit distance (_unit findNearestEnemy _unit)]; " \n "      }; " \n "      systemChat format [""%1 is nearest player, but he's %2 meters away!"", ((nearestObjects [_unit, [""Man""], 2000, true]) arrayIntersect allPlayers) select 0, _unit distance (((nearestObjects [_unit, [""Man""], 2000, true]) arrayIntersect allPlayers) select 0)]; " \n "     }; " \n "     if (isPlayer _unit) exitWith {}; " \n "     private _chance = (random 100); " \n "     private _success = 80; " \n "     if (_debug) then {systemChat format [""Random chance to attempt escape (must be greater than %2): %1"", _chance, _success];}; " \n "     if (_chance < _success) exitWith { " \n "      if (_debug) then {systemChat format [""%1 can't escape!"", _unit];}; " \n "     }; " \n "     if (_chance > _success) then { " \n "      if (_debug) then {systemChat format [""%1 will try to escape."", _unit];}; " \n "     }; " \n "     if ( " \n "      (_unit getVariable [""ACE_captives_isSurrendering"", false]) && " \n "      (!(_unit getVariable [""ACE_captives_isHandcuffed"", false])) && " \n "      (!(_unit getVariable [""ACE_medical_isUnconscious"", false])) && " \n "      (_chance > _success) " \n "     ) then { " \n "      private _waitTime = (60 + (random 2 * (count _players)) + (random 180)); " \n "      if (_debug) then {systemChat format [""%1 releasing from ACE surrender in %2 seconds."", _unit, _waitTime];}; " \n "      sleep _waitTime; " \n "      [[_unit, false], ACE_captives_fnc_setSurrendered] remoteExec [""call"", _unit]; " \n "      if (_debug) then {systemChat format [""%1 released!"", _unit];}; " \n "      _droppedWeapon = (nearestObjects [_unit, [""GroundWeaponHolder"", ""WeaponHolder"", ""WeaponHolderSimulated""], 15, true]); " \n "      if (!(isNil {_droppedWeapon select 0})) then { " \n "       _unit setVariable [""nearDroppedWeapon"", true, true]; " \n "       _box = _droppedWeapon select 0; " \n "       _unit setVariable [""droppedWeaponBox"", _box, true]; " \n "       _boxContents = weaponCargo _box; " \n "       _unit setVariable [""droppedBoxContents"", _boxContents, true]; " \n "       _weapon = (_boxContents select 0); " \n "       _unit setVariable [""droppedWeaponID"", _weapon, true]; " \n "      } else { " \n "       _unit setVariable [""nearDroppedWeapon"", false, true]; " \n "      }; " \n "      if (_debug) then {systemChat format [""Is %1 near a dropped weapon? %2"", _unit, (_unit getVariable ""nearDroppedWeapon"")];}; " \n "      if ( " \n "       (_unit getVariable [""nearDroppedWeapon"", false]) && " \n "       ( " \n "        (currentWeapon _unit == """") || " \n "        (primaryWeapon _unit == """") " \n "       ) " \n "      ) then { " \n "       if (_debug) then {systemChat ""Escaping..."";}; " \n "       [{ " \n "        params [""_debug"", ""_unit"", ""_players"", ""_box"", ""_weapon""]; " \n "        if (_debug) then {systemChat ""Getting armed..."";}; " \n "        if (_debug) then {systemChat format [""%1 sees %3 in container/holder %2."", _unit, _box, _weapon];}; " \n "        [_unit] joinSilent grpNull; " \n "        (group _unit) deleteGroupWhenEmpty true; " \n "        _unit disableAI ""FSM""; " \n "        if (random 100 > 50) then {_unit setUnitPos ""MIDDLE"";} else {_unit setUnitPosWeak ""UP""; _unit setUnitPos ""AUTO"";}; " \n "        _wp_1 = (group _unit) addWaypoint [getPos _box, 0]; " \n "        _wp_1 setWaypointType ""MOVE""; " \n "        _wp_1 setWaypointSpeed ""NORMAL""; " \n "        _wp_1 setWaypointCombatMode ""BLUE""; " \n "        _wp_1 setWaypointBehaviour ""CARELESS""; " \n "        _wp_1 setWaypointTimeout [10, 15, 20]; " \n "        _takeWeapon = [_debug, _unit, _players, _box, _weapon] spawn { " \n "         params [""_debug"", ""_unit"", ""_players"", ""_box"", ""_weapon""]; " \n "         waitUntil {(_unit distance _box < 1)}; " \n "         if (_unit distance _box < 1) then { " \n "          _unit action [""TakeWeapon"", _box, _weapon]; " \n "          if (_debug) then {systemChat format [""%1 grabbed the %2."", _unit, _weapon];}; " \n "         }; " \n "         if (_unit distance _box > 15) exitWith { " \n "          if (_debug) then {systemChat format [""%1 too far to take %2!"", _unit, _weapon];}; " \n "         }; " \n "         _unit setVariable [""nearDroppedWeapon"", false, true]; " \n "         _unit setVariable [""droppedWeaponBox"", false, true]; " \n "         _unit setVariable [""droppedBoxContents"", false, true]; " \n "         _unit setVariable [""droppedWeaponID"", false, true]; " \n "        }; " \n "        if ((_unit distance (_unit findNearestEnemy _unit)) < 25) then { " \n "         _unit enableAI ""FSM""; " \n "         _dest = _unit findNearestEnemy _unit; " \n "         if (_debug) then {systemChat format [""Setting combat waypoint to %1"", _dest];}; " \n "         _wp_2 = (group _unit) addWaypoint [getPos _dest, 10]; " \n "         _wp_2 setWaypointType ""SAD""; " \n "         _wp_2 setWaypointSpeed ""NORMAL""; " \n "         _wp_2 setWaypointCombatMode ""RED""; " \n "         _wp_2 setWaypointBehaviour ""COMBAT""; " \n "        } else { " \n "         if (random 100 > 50) then {_unit setUnitPos ""MIDDLE"";} else {_unit setUnitPosWeak ""UP""; _unit setUnitPos ""AUTO"";}; " \n "         _dest = _unit getPos [2000 * sqrt random 1, random 360]; " \n "         if (_debug) then {systemChat format [""Setting escaping waypoint to %1"", _dest];}; " \n "         _wp_2 = (group _unit) addWaypoint [_dest, 0]; " \n "         _wp_2 setWaypointType ""MOVE""; " \n "         _wp_2 setWaypointSpeed ""FULL""; " \n "         if (currentWeapon _unit != """") then { " \n "          _wp_2 setWaypointCombatMode ""YELLOW""; " \n "         } else { " \n "          _wp_2 setWaypointCombatMode ""WHITE""; " \n "         }; " \n "         _wp_2 setWaypointBehaviour ""COMBAT""; " \n "         _wp_2 setWaypointStatements [""true"", ""deleteVehicle this;""]; " \n "        }; " \n "       }, [_debug, _unit, _players, (_unit getVariable ""droppedWeaponBox""), (_unit getVariable ""droppedWeaponID"")], 1] call CBA_fnc_waitAndExecute; " \n "      } else { " \n "       if (_debug) then {systemChat ""Escaping..."";}; " \n "       [{ " \n "        private _debug = (_this select 0); " \n "        if (_debug) then {systemChat ""Running away..."";}; " \n "        private _unit = (_this select 1); " \n "        if (_debug) then {systemChat format [""%1"", _unit];}; " \n "        [_unit] joinSilent grpNull; " \n "        (group _unit) deleteGroupWhenEmpty true; " \n "        _unit disableAI ""FSM""; " \n "        _unit playAction ""Panic""; " \n "        _unit setBehaviour ""CARELESS""; " \n "        if (random 100 > 50) then {_unit setUnitPos ""MIDDLE"";} else {_unit setUnitPosWeak ""UP""; _unit setUnitPos ""AUTO"";}; " \n "        _unit setVariable [""nearDroppedWeapon"", false, true]; " \n "        _unit setVariable [""droppedWeaponBox"", false, true]; " \n "        _unit setVariable [""droppedBoxContents"", false, true]; " \n "        _unit setVariable [""droppedWeaponID"", false, true]; " \n "        _dest = _unit getPos [2000 * sqrt random 1, random 360]; " \n "        if (_debug) then {systemChat format [""Setting fleeing waypoint to %1"", _dest];}; " \n "        _wp_1 = (group _unit) addWaypoint [_dest, 0]; " \n "        _wp_1 setWaypointType ""MOVE""; " \n "        _wp_1 setWaypointCombatMode ""BLUE""; " \n "        _wp_1 setWaypointBehaviour ""CARELESS""; " \n "        _wp_1 setWaypointStatements [""true"", ""deleteVehicle this;""]; " \n "       }, [_debug, _unit], 1] call CBA_fnc_waitAndExecute; " \n "      }; " \n "     }; " \n "     if (_debug) then {systemChat format [""Escape attempt completed for %1"", _unit];}; " \n "    }; " \n "    [_target, _player] call _CHZ_hintSurrender; " \n "    if ((alive _target) && (!(currentWeapon _target == """"))) then { " \n "     [[_target, currentWeapon _target], CBA_fnc_dropWeapon] remoteExec [""call"", _target]; " \n "     [[_target, true], ACE_captives_fnc_setSurrendered] remoteExec [""call"", _target]; " \n "     [_target] spawn _CHZ_waitSurrender; " \n "    } else { " \n "     [[_target, true], ACE_captives_fnc_setSurrendered] remoteExec [""call"", _target]; " \n "     [_target] spawn _CHZ_waitSurrender; " \n "    }; " \n "   }; " \n "  }, 1, cursorObject] call CBA_fnc_addPerFrameHandler; " \n " }; " \n "}; " \n "";
+					id=2681;
+					type="Logic";
+				};
+				class Item1
+				{
+					dataType="Comment";
+					class PositionInfo
+					{
+						position[]={8386.1797,-0.007437292,1117.2748};
+					};
+					title="c_CBA_ACE_surrendering_EH";
+					description="the entirety of the single game logic object contains the script needed to handle surrendering of AI to players and handle escape attempting. simply place it in your mission for it to have an effect. feel free to tweak it if needed. by default, enemy AI and civilians will surrender to armed players that are close and threatening enough, with unarmed or low morale/courage/skill AI surrendering faster. some ""hardcore"" AI might not surrender at all unless injured or out of ammunition. ACE flashbangs (and RHS ones) greatly increase the chance of surrender for several seconds after use. note that aiming at an AI ""increases"" the surrender chance, as well as outnumbering them.";
+					id=2682;
+					atlOffset=3.1563659;
+				};
+			};
+			id=2683;
+			atlOffset=1.5790181;
 		};
 	};
 	class Connections

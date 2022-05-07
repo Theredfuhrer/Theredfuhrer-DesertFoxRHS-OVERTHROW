@@ -195,7 +195,7 @@ class CfgFunctions
 			class jobsDialog {};
 			class craftDialog {};
 			class uploadData {};
-			class logisticsDialog {};	
+			class logisticsDialog {};
 			class buyBusinessDialog {};
 			class LegitMenu {};
 		};
@@ -478,9 +478,11 @@ class CfgFunctions
 			class createSquad {};
 			class experience {};
 			class dangerCaused {};
+			class PoliceRemoveObj {};
 			class randomizeLoadout {};
 			class getRandomLoadout {};
-			class PoliceRemoveObj {};
+			class CRIMgetRandomLoadout {};
+			class surrenderAction {};
 		};
 
 		/*

@@ -166,8 +166,8 @@ OT_item_CargoContainer = "B_Slingload_01_Cargo_F";
 
 //Shop items
 OT_item_ShopRegister = "Land_CashDesk_F";//Cash registers
-OT_item_BasicGun = "rhsusf_weap_m9";//Dealers always sell this cheap hgun_P07_F
-OT_item_BasicAmmo = "rhsusf_mag_15Rnd_9x19_FMJ"; // 16Rnd_9x21_Mag
+OT_item_BasicGun = "rhsusf_weap_glock17g4";//Dealers always sell this cheap hgun_P07_F
+OT_item_BasicAmmo = "rhsusf_mag_17Rnd_9x19_FMJ"; // 16Rnd_9x21_Mag
 
 OT_allDrugs = ["OT_Ganja","OT_Blow"];
 OT_illegalItems = OT_allDrugs;
@@ -179,8 +179,8 @@ OT_item_DefaultBlueprints = [];
 
 OT_itemCategoryDefinitions = [
     ["General",["ACE_fieldDressing","Banana","Map","ToolKit","Compass","ACE_EarPlugs","Watch","Radio","Compass","ACE_Spraypaint","Altimiter","MapTools","Binocular"]],
-    ["Pharmacy",["Dressing","Bandage","morphine","adenosine","atropine","ACE_EarPlugs","epinephrine","bodyBag","quikclot","salineIV","bloodIV","plasmaIV","personalAidKit","surgicalKit","tourniquet","splint"]],
-    ["Electronics",["Rangefinder","Cellphone","Radio","Watch","GPS","monitor","DAGR","_dagr","Battery","ATragMX","ACE_Flashlight","C_UavTerminal"]],
+    ["Pharmacy",["Dressing","Bandage","morphine","adenosine","atropine","ACE_EarPlugs","epinephrine","bodyBag","quikclot","salineIV","bloodIV","plasmaIV","personalAidKit","surgicalKit","tourniquet","splint","adv_aceCPR_AED"]],
+    ["Electronics",["Rangefinder","Cellphone","Radio","Watch","GPS","monitor","DAGR","_dagr","Battery","ATragMX","ACE_Flashlight","C_UavTerminal","ItemRadio"]],
     ["Hardware",["Tool","CableTie","ACE_Spraypaint","wirecutter","ACE_rope"]],
     ["Surplus",["Rangefinder","Binocular","Compass","ACE_Vector","ACE_Yardage","ACE_NVG_Gen1"]]
 ];
@@ -241,21 +241,15 @@ OT_backpacks = [
 	["H_RacingHelmet_1_red_F",130,0,0,2],
 	["H_RacingHelmet_3_F",130,0,0,2],
 	["H_Hat_Tinfoil_F",5,0,0,1]
-];
-if(OT_hasTFAR) then {
-	OT_backpacks append [
-		["tf_anprc155",1000,0,0,0.1],
-		["tf_anprc148jem",500,0,0,0.1],
-		["tf_anprc148jem_*",500,0,0,0.1],
-		["tf_anprc148jem_81",500,0,0,0.1],
-		["tf_anarc210",1500,0,0,0.1],
-		["tf_anarc164",200,0,0,0.5],
-		["tf_anprc155_coyote",100,0,0,0.5],
-		["rhsusf_radio_anprc152",100,0,0,0.5],
-		["rhsusf_radio_R187P1",100,0,0,0.1],
-		["rhsusf_radio_R169P1",150,0,0,0.1]
 	];
-};
+	if(OT_hasTFAR) then {
+		OT_backpacks append [
+			["tf_anprc155",1000,0,0,0.1],
+			["tf_anarc210",1500,0,0,0.1],
+			["tf_anarc164",200,0,0,0.5],
+			["tf_anprc155_coyote",100,0,0,0.5]
+		];
+	};
 
 if (isServer) then {
 	//Basic unproducable items used in production
@@ -474,11 +468,11 @@ _allHelis = "
 	};
 }foreach(_allHelis);
 
-//Chinook (unarmed) special case for production logistics
-OT_helis pushback ["B_Heli_Transport_03_unarmed_F",[150000,0,110,5],true];
-OT_allVehicles pushBackUnique "B_Heli_Transport_03_unarmed_F";
+//Changed to MI8 special case for production logistics
+OT_helis pushback ["RHS_Mi8t_civilian",[150000,0,110,5],true];
+OT_allVehicles pushBackUnique "RHS_Mi8t_civilian";
 if(isServer) then {
-	cost setVariable ["B_Heli_Transport_03_unarmed_F",[150000,0,110,5],true];
+	cost setVariable ["RHS_Mi8t_civilian",[150000,0,110,5],true];
 };
 
 {
@@ -634,7 +628,182 @@ if (isClass(configfile >> "CfgPatches" >> "hlcweapons_core")) then { //NIARMS ad
 	//Get vehicles && weapons
 	private _vehicles = [];
 	private _weapons = [];
-	private _blacklist = ["Throw","Put","NLAW_F","rhs_weap_aks74u","rhs_weap_m79","rhs_weap_mk18_KAC"];
+	private _blacklist = [
+	"Throw",
+	"Put",
+	"NLAW_F",
+	//Vanilla Hand Guns
+	"hgun_PDW2000_F",
+	"hgun_Pistol_heavy_02_F",
+	"hgun_ACPC2_F",
+	"hgun_Pistol_heavy_01_F",
+	"hgun_Rook40_F",
+	"hgun_P07_F",
+	"hgun_Pistol_01_F",
+	"hgun_P07_blk_F",
+	"hgun_P07_khk_F",
+	"hgun_Pistol_heavy_01_green_F",
+	"hgun_esd_01_F",
+	"hgun_Pistol_Signal_F",
+	//Vanilla Rifles
+	"arifle_TRG20_F",
+	"arifle_Mk20_plain_F",
+	"arifle_Mk20_F",
+	"arifle_Mk20_GL_plain_F",
+	"arifle_Mk20_GL_F",
+	"arifle_Mk20C_plain_F",
+	"arifle_Mk20C_F",
+	"arifle_TRG21_GL_F",
+	"arifle_Katiba_F",
+	"arifle_Katiba_GL_F",
+	"arifle_Katiba_C_F",
+	"arifle_MX_F",
+	"arifle_MX_Black_F",
+	"arifle_MX_GL_F",
+	"arifle_MX_GL_Black_F",
+	"arifle_MX_SW_F",
+	"arifle_MX_SW_Black_F",
+	"arifle_MXC_F",
+	"arifle_MXC_Black_F",
+	"arifle_MXM_F",
+	"arifle_MXM_Black_F",
+	"arifle_SDAR_F",
+	"arifle_AK12_GL_F",
+	"arifle_AKM_F",
+	"arifle_AKS_F",
+	"arifle_SPAR_01_blk_F",
+	"arifle_SPAR_01_khk_F",
+	"arifle_SPAR_01_snd_F",
+	"arifle_SPAR_01_GL_blk_F",
+	"arifle_SPAR_01_GL_khk_F",
+	"arifle_SPAR_01_GL_snd_F",
+	"arifle_SPAR_02_blk_F",
+	"arifle_SPAR_02_khk_F",
+	"arifle_SPAR_02_snd_F",
+	"arifle_SPAR_03_blk_F",
+	"arifle_SPAR_03_khk_F",
+	"arifle_SPAR_03_snd_F",
+	"arifle_MX_GL_khk_F",
+	"arifle_MX_khk_F",
+	"arifle_MX_SW_khk_F",
+	"arifle_MXC_khk_F",
+	"arifle_MXM_khk_F",
+	"srifle_DMR_07_blk_F",
+	"srifle_DMR_07_ghex_F",
+	"srifle_DMR_07_hex_F",
+	"arifle_CTAR_blk_F",
+	"arifle_CTAR_ghex_F",
+	"arifle_CTAR_hex_F",
+	"arifle_CTAR_GL_blk_F",
+	"arifle_CTAR_GL_ghex_F",
+	"arifle_CTAR_GL_hex_F",
+	"arifle_CTARS_blk_F",
+	"arifle_CTARS_ghex_F",
+	"arifle_CTARS_hex_F",
+	"arifle_ARX_blk_F",
+	"arifle_ARX_ghex_F",
+	"arifle_ARX_hex_F",
+	"arifle_AK12_arid_F",
+	"arifle_AK12_lush_F",
+	"arifle_AK12_GL_arid_F",
+	"arifle_AK12_GL_lush_F",
+	"arifle_AK12U_F",
+	"arifle_AK12U_arid_F",
+	"arifle_AK12U_lush_F",
+	"arifle_MSBS65_F",
+	"arifle_MSBS65_black_F",
+	"arifle_MSBS65_camo_F",
+	"arifle_MSBS65_sand_F",
+	"arifle_MSBS65_GL_F",
+	"arifle_MSBS65_GL_black_F",
+	"arifle_MSBS65_GL_camo_F",
+	"arifle_MSBS65_GL_sand_F",
+	"arifle_MSBS65_Mark_F",
+	"arifle_MSBS65_Mark_black_F",
+	"arifle_MSBS65_Mark_camo_F",
+	"arifle_MSBS65_Mark_sand_F",
+	"arifle_MSBS65_UBS_F",
+	"arifle_MSBS65_UBS_black_F",
+	"arifle_MSBS65_UBS_camo_F",
+	"arifle_MSBS65_UBS_sand_F",
+	"arifle_RPK12_F",
+	"arifle_RPK12_arid_F",
+	"arifle_RPK12_lush_F",
+	"arifle_TRG21_F",
+	//Vanilla Snipers
+	"srifle_GM6_F",
+	"srifle_EBR_F",
+	"srifle_GM6_camo_F",
+	"srifle_LRR_F",
+	"srifle_LRR_camo_F",
+	"srifle_EBR_F",
+	"srifle_DMR_01_F",
+	"srifle_DMR_01_F",
+	"srifle_GM6_ghex_F",
+	"srifle_LRR_tna_F",
+	"srifle_DMR_06_hunter_F",
+	"srifle_DMR_04_F",
+	"srifle_DMR_04_Tan_F",
+	"srifle_DMR_05_blk_F",
+	"srifle_DMR_05_hex_F",
+	"srifle_DMR_05_tan_f",
+	"srifle_DMR_06_camo_F",
+	"srifle_DMR_06_olive_F",
+	"srifle_DMR_02_F",
+	"srifle_DMR_02_camo_F",
+	"srifle_DMR_02_sniper_F",
+	"srifle_DMR_03_F",
+	"srifle_DMR_03_multicam_F",
+	"srifle_DMR_03_khaki_F",
+	"srifle_DMR_03_tan_F",
+	"srifle_DMR_03_woodland_F",
+	//Vanilla SMGs
+	"SMG_03C_black",
+	"SMG_03C_camo",
+	"SMG_03C_hex",
+	"SMG_03C_khaki",
+	"SMG_03C_TR_black",
+	"SMG_03C_TR_camo",
+	"SMG_03C_TR_hex",
+	"SMG_03C_TR_khaki",
+	"SMG_02_F",
+	"SMG_01_F",
+	"SMG_05_F",
+	//Vanilla LMGs
+	"LMG_Zafir_F",
+	"LMG_Mk200_F",
+	"LMG_03_F",
+	"LMG_Mk200_black_F",
+	//Vanilla Shotguns
+	"sgun_HunterShotgun_01_F",
+	"sgun_HunterShotgun_01_sawedoff_F",
+	//Vanilla MMGs (No clue what these are...)
+	"MMG_01_hex_F",
+	"MMG_01_tan_F",
+	"MMG_02_black_F",
+	"MMG_02_camo_F",
+	"MMG_02_sand_F",
+	//RHS BLANKS
+	"rhs_mag_30Rnd_556x45_M200_Stanag",
+	"rhs_mag_20Rnd_556x45_M200_Stanag",
+	//Vanilla Launchers
+	"launch_NLAW_F",
+	"launch_RPG32_F",
+	"launch_I_Titan_F",
+	"launch_O_Titan_F",
+	"launch_B_Titan_F",
+	"launch_O_Titan_short_F",
+	"launch_I_Titan_short_F",
+	"launch_B_Titan_short_F",
+	"launch_RPG32_ghex_short_F",
+	"launch_RPG7_F",
+	"launch_O_Titan_ghex_F",
+	"launch_B_Titan_tna_F",
+	"launch_O_Titan_short_ghex_F",
+	"launch_B_Titan_short_tna_F",
+	"launch_RPG32_green_F",
+	"launch_I_Titan_eaf_F",
+	"launch_B_Titan_olive_F"];
 
 	private _all = format["(getNumber( _x >> ""scope"" ) isEqualTo 2 ) && (getText( _x >> ""faction"" ) isEqualTo '%1')",_name] configClasses ( configFile >> "cfgVehicles" );
 	{
@@ -1013,7 +1182,7 @@ OT_staticWeapons = ["rhsgref_cdf_reg_M252","rhsgref_cdf_ZU23","rhsgref_cdf_SPG9M
 
 OT_miscables = ["ACE_Wheel","ACE_Track","Land_CanisterFuel_Red_F","Land_Workbench_01_F","Land_PortableLight_double_F","Land_PortableLight_single_F","Land_Camping_Light_F","Land_PortableHelipadLight_01_F","PortableHelipadLight_01_blue_F",
 "PortableHelipadLight_01_green_F","PortableHelipadLight_01_red_F","PortableHelipadLight_01_white_F","PortableHelipadLight_01_yellow_F","Land_Campfire_F","Land_PortableLight_02_single_yellow_F","Land_PortableLight_02_double_yellow_F",
-"Land_PortableLight_02_quad_yellow_F","Land_LampStreet_F","RoadBarrier_F","RoadBarrier_small_F","RoadCone_F","RoadCone_L_F","Land_Sleeping_bag_F","Land_Sleeping_bag_blue_F","Land_LampDecor_F","Land_LampStreet_small_F","Land_LampAirport_F"];
+"Land_PortableLight_02_quad_yellow_F","Land_PowerPoleWooden_L_F","RoadBarrier_F","RoadBarrier_small_F","RoadCone_F","RoadCone_L_F","Land_Sleeping_bag_F","Land_Sleeping_bag_blue_F","Land_LampDecor_F","Land_LampStreet_small_F","Land_LampAirport_F","Land_LampStreet_F"];
 
 //Stuff you can build: [name,price,array of possible classnames,init function,??,description]
 OT_Buildables = [
@@ -1031,17 +1200,19 @@ OT_Buildables = [
 	["Barracks",40000,[OT_barracks],"",false,"Allows recruiting of squads"],
 	["Guard Tower",50000,["Land_Cargo_Tower_V4_F","Land_Cargo_Tower_V3_F","Land_Cargo_Tower_V2_F","Land_Cargo_Tower_V1_F"],"",false,"It's a huge tower, what else do you need?."],
 	["Hangar",120000,["Land_Airport_01_hangar_F"],"",false,"A big empty building, could probably fit a plane inside it."],
-	["Workshop",10000,[
-		/*["Land_Cargo_House_V4_F",[0,0,0],0,1,0,[],"","",true,false],
+	["Workshop",15000,[
+		/*["Land_Workshop_01_F",[0,0,0],0,1,0,[],"","",true,false],
 		["Land_ClutterCutter_large_F",[0,0,0],0,1,0,[],"","",true,false],
 		["Box_NATO_AmmoVeh_F",[-2.91,-2.008,0],90,1,0,[],"","",true,false],
+		["B_Slingload_01_Fuel_F",[-10,-7,0],10,5,0,[5,-7],"","",true,false],
 		["Land_WeldingTrolley_01_F",[-3.53163,1.73366,0],87.0816,1,0,[],"","",true,false],
 		["Land_ToolTrolley_02_F",[-3.47775,3.5155,0],331.186,1,0,[],"","",true,false]
 		*/
 		["Land_ToolTrolley_02_F",[-0.943165,0.888457,-1.90735e-006],184.978,1,0,[-0.000586218,0.000940886],"","",true,false],
 		["Land_WeldingTrolley_01_F",[-2.5792,-1.39631,-4.76837e-007],292.933,1,0,[-0.000260068,1.87621e-005],"","",true,false],
-		["Land_cargo_house_slum_F",[-5.28708,1.71423,0],0,1,0,[0,0],"","",true,false],
-		["Box_NATO_AmmoVeh_F",[-6.28864,-2.78878,0.0305414],9.03579e-005,1,0,[1.25353e-005,-6.98109e-006],"","",true,false]
+		["Land_Workshop_01_F",[-5.28708,1.71423,0],0,1,0,[0,0],"","",true,false],
+		["Box_NATO_AmmoVeh_F",[-6.28864,-2.78878,0.0305414],9.03579e-005,1,0,[1.25353e-005,-6.98109e-006],"","",true,false],
+		["B_Slingload_01_Fuel_F",[-10,-7,0],10,5,0,[5,-7],"","",true,false]
 	],"OT_fnc_initWorkshop",true,"Attach weapons to vehicles"],
 	["House",15000,["Land_House_Small_06_F","Land_House_Small_02_F","Land_House_Small_03_F","Land_GarageShelter_01_F","Land_Slum_04_F"],"OT_fnc_initHouse",false,"4 walls, a roof, and if you're lucky a door that opens."],
 	["Police Station",25000,[OT_policeStation],"OT_fnc_initPoliceStation",false,"Allows hiring of policeman to raise stability in a town and keep the peace. Comes with 2 units."],
@@ -1074,19 +1245,19 @@ OT_Placeables = [
 OT_allSquads = OT_Squadables apply { _x params ["_name"]; _name };
 
 OT_workshop = [
-	["Static MG","C_Offroad_01_F",51250,"rhsgref_cdf_DSHKN","rhsgref_cdf_DSHKN_Mini_TriPod",[[0.25,-2,1]],0],
-	["Static GL","C_Offroad_01_F",64750,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.25,-2,1]],0],
-	["Static AT","C_Offroad_01_F",187500,"rhsgref_cdf_SPG9","rhsgref_cdf_SPG9M",[[0,-1.5,0.25],180]],
-	["Static AA","C_Offroad_01_F",187500,"rhsgref_cdf_ZU23","rhsgref_cdf_ZU23",[[0,-1.5,0.25],180]],
-	["Mounted HMG","RHS_Ural_Open_Civ_01",69500,"rhsgref_cdf_DSHKN","rhsgref_cdf_DSHKN_Mini_TriPod",[[0.224,-1.887,1.5]],0],
-	["Mounted HMG","RHS_Ural_Open_Civ_02",69500,"rhsgref_cdf_DSHKN","rhsgref_cdf_DSHKN_Mini_TriPod",[[0.224,-1.887,1.5]],0],
-	["Mounted HMG","RHS_Ural_Open_Civ_03",69500,"rhsgref_cdf_DSHKN","rhsgref_cdf_DSHKN_Mini_TriPod",[[0.224,-1.887,1.5]],0],
-	["Mounted GMG","RHS_Ural_Open_Civ_01",83000,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.224,-1.887,1.5]],0],
-	["Mounted GMG","RHS_Ural_Open_Civ_02",83000,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.224,-1.887,1.5]],0],
-	["Mounted GMG","RHS_Ural_Open_Civ_03",83000,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.224,-1.887,1.5]],0],
-	["Mounted Mortar","RHS_Ural_Open_Civ_01",216000,"rhsgref_cdf_reg_M252","rhsgref_cdf_reg_M252",[[-0.064,-1.854,0.5]],0],
-	["Mounted Mortar","RHS_Ural_Open_Civ_02",216000,"rhsgref_cdf_reg_M252","rhsgref_cdf_reg_M252",[[-0.064,-1.854,0.5]],0],
-	["Mounted Mortar","RHS_Ural_Open_Civ_03",216000,"rhsgref_cdf_reg_M252","rhsgref_cdf_reg_M252",[[-0.064,-1.854,0.5]],0]
+	["Static MG","C_Offroad_01_F",5000,"RHS_M2StaticMG_USMC_WD","RHS_M2StaticMG_USMC_WD",[[0.25,-2,1]],0],
+	["Static GL","C_Offroad_01_F",6000,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.25,-2,1]],0],
+	["Static AT","C_Offroad_01_F",7000,"rhsgref_cdf_SPG9","rhsgref_cdf_SPG9",[[0,-1.5,0.25],180]],
+	["Static AA","C_Offroad_01_F",10000,"rhsgref_cdf_ZU23","rhsgref_cdf_ZU23",[[0,-1.5,0.25],180]],
+	["Mounted HMG","RHS_Ural_Open_Civ_01",5500,"RHS_M2StaticMG_USMC_WD","RHS_M2StaticMG_USMC_WD",[[0.224,-1.887,1.5]],0],
+	["Mounted HMG","RHS_Ural_Open_Civ_02",5500,"RHS_M2StaticMG_USMC_WD","RHS_M2StaticMG_USMC_WD",[[0.224,-1.887,1.5]],0],
+	["Mounted HMG","RHS_Ural_Open_Civ_03",5500,"RHS_M2StaticMG_USMC_WD","RHS_M2StaticMG_USMC_WD",[[0.224,-1.887,1.5]],0],
+	["Mounted GMG","RHS_Ural_Open_Civ_01",6500,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.224,-1.887,1.5]],0],
+	["Mounted GMG","RHS_Ural_Open_Civ_02",6500,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.224,-1.887,1.5]],0],
+	["Mounted GMG","RHS_Ural_Open_Civ_03",6500,"rhsgref_cdf_AGS30_TriPod","rhsgref_cdf_AGS30_TriPod",[[0.224,-1.887,1.5]],0],
+	["Mounted Mortar","RHS_Ural_Open_Civ_01",15000,"rhsgref_cdf_reg_M252","rhsgref_cdf_reg_M252",[[-0.064,-1.854,0.5]],0],
+	["Mounted Mortar","RHS_Ural_Open_Civ_02",15000,"rhsgref_cdf_reg_M252","rhsgref_cdf_reg_M252",[[-0.064,-1.854,0.5]],0],
+	["Mounted Mortar","RHS_Ural_Open_Civ_03",15000,"rhsgref_cdf_reg_M252","rhsgref_cdf_reg_M252",[[-0.064,-1.854,0.5]],0]
 ];
 
 OT_repairableRuins = [

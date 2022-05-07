@@ -3,8 +3,8 @@ params ["_frompos","_ao","_attackpos",["_delay",0]];
 //CTRG Support for non-HQ
 
 if (_delay > 0) then {sleep _delay};
-private _vehtype = "B_CTRG_LSV_01_light_F";
-private _squadtype = ["B_CTRG_Soldier_TL_tna_F","B_CTRG_Soldier_LAT2_tna_F","B_CTRG_Soldier_M_tna_F","B_CTRG_Soldier_AR_tna_F","B_CTRG_Soldier_Medic_tna_F","B_CTRG_Soldier_JTAC_tna_F"];
+private _vehtype = "rhsusf_stryker_mii34_wd";
+private _squadtype = ["rhsusf_army_ocp_teamleader","rhsusf_army_ocp_riflemanl","rhsusf_army_ocp_marksman","rhsusf_army_ocp_autorifleman","rhsusf_army_ocp_medic","rhsusf_army_ocp_jfo"];
 private _spawnpos = _frompos;
 private _group1 = [_spawnpos, WEST,_squadtype] call BIS_fnc_spawnGroup;
 _group1 deleteGroupWhenEmpty true;
@@ -14,8 +14,8 @@ private _allunits = [];
 private _veh = false;
 private _pos = false;
 
-private _radius = 1000; 
-private _exp = "(randomGen 1 + forest + trees) * (1 - sea) * (1 - houses)"; 
+private _radius = 1000;
+private _exp = "(randomGen 1 + forest + trees) * (1 - sea) * (1 - houses)";
 private _prec = 50;
 private _bestplace = selectBestPlaces [_attackpos,_radius,_exp,_prec,1];
 private _bestplace1 = (_bestplace select 0);

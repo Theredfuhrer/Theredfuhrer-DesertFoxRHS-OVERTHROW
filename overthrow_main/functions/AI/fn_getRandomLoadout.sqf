@@ -13,24 +13,7 @@ if(count _loadouts > 0) then {
     //return a cached loadout
     _loadout = selectRandom _loadouts;
 }else{
-    //generate one and cache it
-    if((count _baseloadout) isEqualTo 0) then {
-        _baseloadout = getUnitLoadout _unit;
-    };
-	_options = [_baseloadout] + _params;
-	if (_unit in OT_NATO_Garrison) then {
-    _options = [_baseloadout,OT_NATO_GarrisonWep,OT_NATO_GarrisonWepGL,OT_NATO_GarrisonWepMG,OT_NATO_GarrisonWepSR];
-	}else{
-		if (_unit in OT_NATO_Reinforcements) then {
-			_options = [_baseloadout,OT_NATO_ReinforcementsWep,OT_NATO_ReinforcementsWepGL,OT_NATO_ReinforcementsWepMG,OT_NATO_ReinforcementsWepSR];
-		}else{
-			if (_unit in OT_NATO_Army) then {
-				_options = [_baseloadout,OT_NATO_ArmyWep,OT_NATO_ArmyWepGL,OT_NATO_ArmyWepMG,OT_NATO_ArmyWepSR];
-			}else{
-				_options = [_baseloadout] + _params;
-			};
-		};
-	};
+
     _loadout = _options call OT_fnc_randomizeLoadout;
     spawner setVariable [format["loadouts_%1",_index],[_loadout],false];
 };
