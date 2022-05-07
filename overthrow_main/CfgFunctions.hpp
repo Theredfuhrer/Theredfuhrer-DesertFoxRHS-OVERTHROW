@@ -481,7 +481,6 @@ class CfgFunctions
 			class PoliceRemoveObj {};
 			class randomizeLoadout {};
 			class getRandomLoadout {};
-			class CRIMgetRandomLoadout {};
 			class surrenderAction {};
 		};
 
